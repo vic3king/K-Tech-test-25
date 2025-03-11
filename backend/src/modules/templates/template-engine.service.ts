@@ -5,7 +5,7 @@ import { TemplateData } from './templates.dto';
 @Injectable()
 export class TemplateEngineService {
   constructor() {
-    // Register custom helpers
+    // format cat names
     Handlebars.registerHelper('formatCats', (cats: string[]) => {
       if (!Array.isArray(cats)) return '';
       if (cats.length === 0) return '';
@@ -14,6 +14,7 @@ export class TemplateEngineService {
       return `${cats.slice(0, -1).join(', ')}, and ${cats[cats.length - 1]}`;
     });
 
+    // format price
     Handlebars.registerHelper('formatPrice', (price: number) => {
       return new Intl.NumberFormat('en-GB', {
         style: 'currency',
