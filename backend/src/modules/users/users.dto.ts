@@ -1,6 +1,6 @@
 import { IsEmail, IsString } from 'class-validator';
 
-interface Cat {
+export interface Cat {
   name: string;
   subscriptionActive: boolean;
   breed: string;

@@ -27,7 +27,8 @@ describe('CommsController (e2e)', () => {
         .expect(200)
         .expect((res) => {
           expect(res.body).toEqual({
-            message: 'Welcome Kayleigh Wilderman',
+            message:
+              "Welcome to KatKin, Kayleigh Wilderman! We're super excited for Dorian and Ocie to join the KatKin club and start loving fresh!",
           });
         });
     });
