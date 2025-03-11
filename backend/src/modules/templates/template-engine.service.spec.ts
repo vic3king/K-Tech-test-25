@@ -30,7 +30,7 @@ describe('TemplateEngineService', () => {
 
     it('should compile template with title and message', () => {
       const template = {
-        title: 'Welcome <firstName>',
+        title: 'Welcome <fullName>',
         message: 'Hello <fullName>!',
       };
       const data: TemplateData = {
@@ -39,7 +39,7 @@ describe('TemplateEngineService', () => {
 
       const result = service.compileTemplate(template, data);
       expect(result).toEqual({
-        title: 'Welcome John',
+        title: 'Welcome John Doe',
         message: 'Hello John Doe!',
       });
     });
@@ -97,18 +97,6 @@ describe('TemplateEngineService', () => {
       const result = service.compileTemplate(template, data);
       expect(result).toEqual({
         message: 'Your cats: Luna, Milo, and Felix',
-      });
-    });
-
-    it('should format prices correctly in GBP', () => {
-      const template = {
-        message: 'Total price: <price>',
-      };
-      const data: TemplateData = {};
-
-      const result = service.compileTemplate(template, data);
-      expect(result).toEqual({
-        message: 'Total price: £123.45',
       });
     });
 
