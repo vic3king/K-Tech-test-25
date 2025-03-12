@@ -79,26 +79,12 @@ This will automatically:
 #### Option 2: Manual Setup
 
 ##### Backend
-1. Install dependencies
-```bash
-cd backend
-npm install
-```
-2. Start the development server
-```bash
-npm run start:dev
-```
+1. Install dependencies and start server
+   See [backend/README.md](backend/README.md) for detailed instructions.
 
 ##### Frontend
-1. Install dependencies
-```bash
-cd frontend
-npm install
-```
-2. Start the development server
-```bash
-npm run dev
-```
+1. Install dependencies and start server
+   See [frontend/README.md](frontend/README.md) for detailed instructions.
 
 ## 🧪 Features
 
