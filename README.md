@@ -37,6 +37,8 @@ This app has components for:
 - Skeleton loader
 - React Query and Axios setup for data fetching
 
+Overall, I believe this to be a great assessment that mirrors real-world challenges and tests key technical skills needed for the role.
+
 ## 🔧 Tech Stack
 
 - **Backend**
