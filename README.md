@@ -2,15 +2,15 @@
 
 ## 📝 Summary
 
-For this assessment I went with the monorepo approach as I believe it to be a good starting point for our application but also giving us the flexibility to scale in gradual maintainable steps as each folder in this mono repo can be extracted and run independently.
+For this assessment, I went with the mono repo approach, as I believe it to be a good starting point for our application. It also gives us the flexibility to scale in gradual, maintainable steps, as each folder in this repository can be extracted and run independently.
 
-On the backend you will find a clear separation of different components/modules required to run a highly scalable and efficient REST API using the repository pattern with information flowing from client -> controller -> middleware -> service -> repository -> db each part making use of various smaller patterns like Single Responsibility and DI which is most commonly used.
+On the backend, you will find a clear separation of different components/modules required to run a highly scalable and efficient REST API using the repository pattern. Information flows from client -> controller -> middleware -> service -> repository -> db, each part making use of various smaller patterns, like Single Responsibility and DI, which are most commonly used.
 
-As of today we have two main endpoints with one not being used on the frontend. Our app is more focused on the GET /comms/your-next-delivery/:userId endpoint. This endpoint on frontend component mount uses Axios and react Query to fetch our data from the backend. I slightly modified the response object to include cats information which I needed to display a more complete details modal.
+As of today, we have two main endpoints, with one not being used on the front end. Our app is more focused on the GET /comms/your-next-delivery/:userId endpoint. This endpoint on the frontend component mount uses Axios and React Query to fetch our data from the backend. I slightly modified the response object to include cats' information, which I needed to display a more complete details modal.
 
-On the backend I focused on solving the templating problem. To achieve this I had many options one of which involved using regex to find and update my templates strings with real data, but I felt that would not have been easily readable and would prove hard to maintain in the long run. So I went with Handlebars as preferred templating engine which is a robust and wel maintained package for handling templates.
+On the backend, I focused on solving the templating problem. I had many options to achieve this, including using regex to find and update my template strings with accurate data. However, this would not be easily readable and would prove hard to maintain in the long run. So, I went with Handlebars as my preferred templating engine, which is a robust and well-maintained package for handling templates.
 
-Information on this endpoint flows from a client request to my controller which talks to my comms service and the comms service talking to my templating engine which in  turn gets the right template to use from a repository/db model for templates. I decided to handle templates as its own entity because in the future changes will be made to these templates and new templates will likely be added. This approach means we can make these updates and changes to our templates without having to make a code change or deployment.
+Information on this endpoint flows from a client request to my controller, which talks to my comms service. The comms service talks to my templating engine, which in turn gets the right template to use from a repository/db model for templates. I decided to handle templates as their entity because, in the future, changes will be made to these templates, and new templates will likely be added. This approach means we can make these updates and changes to our templates without having to make a code change or deployment.
 
 I also added:
 - Swagger documentation
@@ -40,70 +40,70 @@ This app has components for:
 ## 🔧 Tech Stack
 
 - **Backend**
-  - NestJS
-  - TypeScript
-  - REST API
+  - `NestJS`
+  - `TypeScript`
+  - `REST API`
   
 - **Frontend**
-  - Next.js
-  - React
-  - TypeScript
-  - Tailwind CSS
+  - `Next.js`
+  - `React`
+  - `TypeScript`
+  - `Tailwind CSS`
 
 ## 📡 API Endpoints
 
-- `GET /comms/welcome-fresh/:userId` - Welcome message for new users
-- `GET /comms/your-next-delivery/:userId` - Next delivery information
+- **`GET /comms/welcome-fresh/:userId`** - Welcome message for new users
+- **`GET /comms/your-next-delivery/:userId`** - Next delivery information
 
 ## 💻 Development
 
-- Backend runs on: `http://localhost:4000`
-  - API Swagger Documentation: `http://localhost:4000/docs`
-- Frontend runs on: `http://localhost:3000`
-  - Visit the app at: `http://localhost:3000/welcome/ff535484-6880-4653-b06e-89983ecf4ed5`
+- Backend runs on: **`http://localhost:4000`**
+  - API Swagger Documentation: **`http://localhost:4000/docs`**
+- Frontend runs on: **`http://localhost:3000`**
+  - Visit the app at: **`http://localhost:3000/welcome/ff535484-6880-4653-b06e-89983ecf4ed5`**
 
 ### Running the Project
 
 #### Option 1: Using the Shell Script (Recommended)
 1. Make the script executable and run it:
-   ```bash
-   chmod +x run-app.sh
-   ./run-app.sh
-   ```
-   This will automatically:
-   - Install dependencies for both frontend and backend
-   - Start the backend server on port 4000
-   - Start the frontend server on port 3000
-   - Kill any existing processes on these ports
+```bash
+chmod +x run-app.sh
+./run-app.sh
+```
+This will automatically:
+  - Install dependencies for both frontend and backend
+  - Start the backend server on port 4000
+  - Start the frontend server on port 3000
+  - Kill any existing processes on these ports
 
 #### Option 2: Manual Setup
 
 ##### Backend
 1. Install dependencies
-   ```bash
-   cd backend
-   npm install
-   ```
+```bash
+cd backend
+npm install
+```
 2. Start the development server
-   ```bash
-   npm run start:dev
-   ```
+```bash
+npm run start:dev
+```
 
 ##### Frontend
 1. Install dependencies
-   ```bash
-   cd frontend
-   npm install
-   ```
+```bash
+cd frontend
+npm install
+```
 2. Start the development server
-   ```bash
-   npm run dev
-   ```
+```bash
+npm run dev
+```
 
 ## 🧪 Features
 
 - Welcome endpoint
-- Get custom delivery message
+- Get the custom delivery message
 
 ## 📝 Environment Variables
 
