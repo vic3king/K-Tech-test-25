@@ -1,4 +1,4 @@
-# KatKin Technical Assessment
+# K Technical Assessment
 
 ## 📝 Summary
 
