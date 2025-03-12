@@ -1,1 +1,1 @@
-export * from './welcome-message.decorator';
+export * from './swagger.decorator';

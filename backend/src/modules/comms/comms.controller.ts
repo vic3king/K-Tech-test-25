@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { NextDeliveryDocs, WelcomeMessageDocs } from '@common/decorators';
 import { NextDeliveryResponse, WelcomeMessageResponse } from '@modules/comms';
 import { ApiTags } from '@nestjs/swagger';
@@ -16,23 +16,23 @@ export class CommsController {
    * @throws {NotFoundException} When the user is not found
    */
   @WelcomeMessageDocs()
-  @Get('welcome-fresh')
+  @Get('welcome-fresh/:userId')
   async getWelcomeMessage(
-    @Query('userId') userId: string,
+    @Param('userId') userId: string,
   ): Promise<WelcomeMessageResponse> {
     return this.commsService.getWelcomeMessage(userId, 'welcome-fresh');
   }
 
   /**
-   * Get the next delivery date for a user
+   * Get the next delivery message for a user
    * @param userId - The unique identifier of the user
-   * @returns {Promise<NextDeliveryResponse>} An object containing the next delivery date
+   * @returns {Promise<NextDeliveryResponse>} An object containing the next delivery message
    * @throws {NotFoundException} When the user is not found
    */
   @NextDeliveryDocs()
-  @Get('your-next-delivery')
+  @Get('your-next-delivery/:userId')
   async getNextDeliveryMessage(
-    @Query('userId') userId: string,
+    @Param('userId') userId: string,
   ): Promise<NextDeliveryResponse> {
     return this.commsService.getNextDeliveryMessage(
       userId,

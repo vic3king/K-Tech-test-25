@@ -6,11 +6,26 @@ import { VersioningType } from '@nestjs/common';
 import { useContainer } from 'class-validator';
 import { setupSwaggerDocs } from './setupSwagger';
 import { Logger } from '@nestjs/common';
-
+import { NestExpressApplication } from '@nestjs/platform-express';
 const logger = new Logger('Main Application');
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    rawBody: true,
+  });
+
+  app.set('trust proxy', true);
+
+  app.enableCors({
+    origin: '*',
+    // origin: 'http://localhost:3000',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders:
+      'Origin, X-Requested-With, Content-Type, Accept, Authorization, Origin, Content-Type, X-Auth-Token, ngrok-skip-browser-warning',
+    credentials: true,
+    preflightContinue: false,
+    optionsSuccessStatus: 200,
+  });
 
   app.use(helmet());
 

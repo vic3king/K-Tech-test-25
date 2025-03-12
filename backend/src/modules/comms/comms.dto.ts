@@ -1,3 +1,4 @@
+import { Cat } from '@modules/users';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class WelcomeMessageResponse {
@@ -22,4 +23,16 @@ export class NextDeliveryResponse {
 
   @ApiProperty({ example: true })
   freeGift: boolean;
+
+  @ApiProperty({
+    example: [
+      {
+        name: 'Cat 1',
+        subscriptionActive: true,
+        breed: 'Breed 1',
+        pouchSize: 'Small',
+      },
+    ],
+  })
+  cats: Cat[];
 }

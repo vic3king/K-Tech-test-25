@@ -1,26 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import Handlebars from 'handlebars';
 import { TemplateData } from './templates.dto';
+import { formatCats, formatPrice } from '@common/utility';
 
 @Injectable()
 export class TemplateEngineService {
   constructor() {
     // format cat names
-    Handlebars.registerHelper('formatCats', (cats: string[]) => {
-      if (!Array.isArray(cats)) return '';
-      if (cats.length === 0) return '';
-      if (cats.length === 1) return cats[0];
-      if (cats.length === 2) return `${cats[0]} and ${cats[1]}`;
-      return `${cats.slice(0, -1).join(', ')}, and ${cats[cats.length - 1]}`;
-    });
+    Handlebars.registerHelper('formatCats', formatCats);
 
     // format price
-    Handlebars.registerHelper('formatPrice', (price: number) => {
-      return new Intl.NumberFormat('en-GB', {
-        style: 'currency',
-        currency: 'GBP',
-      }).format(price);
-    });
+    Handlebars.registerHelper('formatPrice', formatPrice);
   }
 
   private convertSyntax(template: string): string {

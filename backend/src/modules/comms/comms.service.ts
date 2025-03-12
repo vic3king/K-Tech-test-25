@@ -41,11 +41,11 @@ export class CommsService {
       throw new NotFoundException('User not found');
     }
 
+    const activeCats = user.cats.filter((cat) => cat.subscriptionActive);
+
     const message = await this.templatesService.renderTemplate(templateName, {
       fullName: `${user.firstName} ${user.lastName}`,
-      catNames: user.cats
-        .filter((cat) => cat.subscriptionActive) // Only include active subscriptions, can be improved in the future
-        .map((cat) => cat.name),
+      catNames: activeCats.map((cat) => cat.name),
     });
 
     const totalPrice = calculateTotalPrice(user.cats);
@@ -56,6 +56,7 @@ export class CommsService {
       message: message.message,
       totalPrice,
       freeGift,
+      cats: activeCats,
     };
   }
 }
